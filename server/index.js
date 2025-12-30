@@ -55,7 +55,7 @@ app.use((err, req, res, next) => {
     error: process.env.NODE_ENV === 'development' ? err.message : undefined 
   });
 });
-const PORT = 5010;
+const PORT = process.env.PORT;
 
 const startServer = async () => {
   try {
