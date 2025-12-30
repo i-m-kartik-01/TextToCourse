@@ -14,7 +14,7 @@ async function getClient() {
   return client;
 }
 
-const MODEL_NAME = "gemini-2.5-flash-lite"; 
+const MODEL_NAME = "gemini-2.5-flash"; 
 const cleanAndParseJSON = (aiResponse) => {
   try {
     // 1. If it's already an object (some SDK versions do this automatically)
