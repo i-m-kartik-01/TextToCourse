@@ -64,10 +64,11 @@ const regenerateLesson = async (req, res) => {
 const getLessonById = async (req, res) => {
   try {
     const { lessonId } = req.params;
-    const userId = req.auth.payload.sub;
 
-    const lesson = await lessonService.getLessonById(lessonId, userId);
-
+    const lesson = await lessonService.getLessonById(lessonId);
+    if (!lesson) {
+      return res.status(404).json({ message: "Lesson not found Kartik" });
+    }
     return res.json(lesson);
   } catch (error) {
     console.error("Get lesson error:", error);

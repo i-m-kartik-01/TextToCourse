@@ -5,6 +5,6 @@ const youtubeController = require('../controllers/youtubeController');
 const { checkJwt } = require('../middlewares/authMiddleware');
 
 // Route to get YouTube video for a lesson
-router.get('/lessons/:lessonId/video', checkJwt, youtubeController.getLessonVideo);
+router.get('/lessons/:lessonId/video', youtubeController.getLessonVideo);
 
 module.exports = router;

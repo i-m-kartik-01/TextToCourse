@@ -55,7 +55,6 @@ exports.getCourseById = async (req, res) => {
 
     const course = await courseService.getCourseDetails(
       courseId,
-      req.auth?.payload?.sub || null,
     );
 
     return res.json(course);

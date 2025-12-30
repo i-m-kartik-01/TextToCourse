@@ -19,6 +19,7 @@ Deconstruct the lesson "${lessonTitle}" into a JSON-serializable learning object
 - content[]: Array of { type: "heading" | "paragraph" | "code" | "video_query", value: string }.
 - video_query: Must be a specific 5-8 word search phrase for YouTube.
 - quiz[]: Exactly 5 MCQs. Each MUST have a 1-sentence 'explanation'.
+- include codeblocks ONLY if the lesson inherently requires technical implementation.
 
 ### STRICT JSON OUTPUT
 {

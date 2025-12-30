@@ -93,16 +93,16 @@ async function regenerateLessonContent({
 }
 
 
-async function getLessonById(lessonId, userId) {
+async function getLessonById(lessonId) {
   const lesson = await Lesson.findById(lessonId);
   if (!lesson) throw new Error("Lesson not found");
 
   const course = await Course.findById(lesson.courseId);
   if (!course) throw new Error("Course not found");
 
-  if (course.createdBy !== userId) {
-    throw new Error("Unauthorized");
-  }
+  // if (course.createdBy !== userId) {
+  //   throw new Error("Unauthorized");
+  // }
 
   return lesson;
 }

@@ -27,7 +27,7 @@ async function getCoursesByUser(userId) {
     .lean();
 }
 
-async function getCourseDetails(courseId, userId) {
+async function getCourseDetails(courseId) {
   // Fetch course
   const course = await Course.findById(courseId);
   if (!course) {

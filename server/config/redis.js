@@ -7,7 +7,6 @@ const redisClient = createClient({
 
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
-// Explicitly define the async function [cite: 59]
 const connectRedis = async () => {
     if (!redisClient.isOpen) {
         await redisClient.connect();
@@ -15,5 +14,5 @@ const connectRedis = async () => {
     }
 };
 
-// Export both the client and the connection function [cite: 58, 60]
+// Export both the client and the connection function
 module.exports = { redisClient, connectRedis };
