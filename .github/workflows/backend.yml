@@ -11,8 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -30,16 +29,14 @@ jobs:
         working-directory: server
         run: npm run lint --if-present
 
-      - name: Run tests (if exists)
+      - name: Run tests
         working-directory: server
-        run: npm test --if-present
+        run: npm test
 
       # ---------- CD ----------
       - name: Trigger Render Deploy
-        if: github.ref == 'refs/heads/main'
+        if: github.event_name == 'push'
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}" \
+          curl -X POST "https://api.render.com/deploy/${{ secrets.RENDER_SERVICE_ID }}" \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
             -H "Content-Type: application/json"
-
-            
