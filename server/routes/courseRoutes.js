@@ -3,7 +3,7 @@ const router = express.Router();
 
 const courseController = require("../controllers/courseController");
 const quizController = require("../controllers/quizController");
-const { checkJwt } = require("../middlewares/authMiddleware");
+const checkJwt  = require("../middlewares/authMiddleware");
 
 // All routes here are assumed to be protected by auth middleware
 // e.g. app.use("/api", authMiddleware);

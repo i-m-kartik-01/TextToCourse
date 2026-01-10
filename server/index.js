@@ -10,8 +10,9 @@ const moduleRoutes = require("./routes/moduleRoutes");
 const youtubeRoutes = require('./routes/youtubeRoutes');
 const userRoutes = require('./routes/userRoutes');
 
-const app = express();
+// const app = express();
 
+const app = require("./app");
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
@@ -22,9 +23,9 @@ app.use(
 
 app.use(express.json());
 
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
-});
+// app.get("/health", (req, res) => {
+//   res.status(200).json({ status: "ok" });
+// });
 
 app.use("/api", courseRoutes);
 app.use("/api", lessonRoutes);
@@ -57,18 +58,18 @@ app.use((err, req, res, next) => {
 });
 const PORT = process.env.PORT;
 
-const startServer = async () => {
+async function startServer() {
   try {
     await connectDB();
-    await connectRedis(); 
+    await connectRedis();
 
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
-  } catch (error) {
-    console.error("Critical Startup Error:", error);
-    process.exit(1); 
+  } catch (err) {
+    console.error("Critical Startup Error:", err);
+    process.exit(1);
   }
-};
+}
 
 startServer();

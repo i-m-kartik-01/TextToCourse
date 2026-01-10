@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const { checkJwt } = require('../middlewares/authMiddleware');
+const checkJwt  = require('../middlewares/authMiddleware');
 
 // This route syncs Auth0 data with MongoDB
 router.post('/sync', checkJwt, userController.syncUser);

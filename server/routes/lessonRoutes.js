@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const lessonController = require("../controllers/lessonController");
-const { checkJwt } = require("../middlewares/authMiddleware");
+const checkJwt = require("../middlewares/authMiddleware");
 // All lesson routes are assumed to be protected by auth middleware
 
 // Get a single lesson (with content)
