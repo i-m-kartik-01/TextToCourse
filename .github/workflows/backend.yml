@@ -33,7 +33,7 @@ jobs:
         working-directory: server
         run: npm test
 
-      # ---------- CD ----------
+      # ---------- CD ---------
       - name: Trigger Render Deploy
         if: github.event_name == 'push'
         run: |
