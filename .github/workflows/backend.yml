@@ -1,0 +1,45 @@
+name: CI & Deploy Backend (Render)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+
+      # ---------- CI ----------
+      - name: Install dependencies
+        working-directory: server
+        run: npm ci
+
+      - name: Run lint (if exists)
+        working-directory: server
+        run: npm run lint --if-present
+
+      - name: Run tests (if exists)
+        working-directory: server
+        run: npm test --if-present
+
+      # ---------- CD ----------
+      - name: Trigger Render Deploy
+        if: github.ref == 'refs/heads/main'
+        run: |
+          curl -X POST "https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}" \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json"
+
+            
