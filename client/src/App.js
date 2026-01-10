@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/Dashboard";
@@ -12,7 +12,7 @@ import CourseQuizPage from "./pages/CourseQuizPage";
 import CourseQuizReviewPage from "./pages/CourseQuizReviewPage";
 
 function App() {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const {isLoading } = useAuth0();
 
   if (isLoading) {
     return (

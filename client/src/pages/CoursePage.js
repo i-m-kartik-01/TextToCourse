@@ -9,7 +9,6 @@ export default function CoursePage() {
   const {
     isAuthenticated,
     getAccessTokenSilently,
-    loginWithRedirect,
   } = useAuth0();
 
   const [course, setCourse] = useState(null);
