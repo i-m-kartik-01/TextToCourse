@@ -46,12 +46,9 @@ export default function LoginPage() {
             {darkMode ? "Light Mode" : "Dark Mode"}
           </button>
 
-          <a
-            href="#"
-            className="text-sm text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white"
-          >
+          <button type="button" className="link-btn">
             Contact Support
-          </a>
+          </button>
         </div>
       </header>
 
@@ -122,8 +119,8 @@ export default function LoginPage() {
             </div>
 
             <div className="flex justify-center gap-6 mt-8 text-sm text-gray-400 dark:text-slate-500">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
+                <button type="button" className="link-btn">Terms</button>
+                <button type="button" className="link-btn">Privacy</button>
             </div>
           </div>
         </div>
